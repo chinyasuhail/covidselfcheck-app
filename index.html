@@ -15,7 +15,6 @@
             --text-primary: #111111;
             --text-secondary: #555555;
             --text-muted: #888888;
-            --text-light: #aaaaaa;
             --accent: #2563eb;
             --border: #e5e5e5;
             --border-light: #eeeeee;
@@ -108,32 +107,21 @@
             color: var(--text-primary);
         }
 
-        /* Chapter Sections */
-        .chapter {
+        /* Hero / Opening */
+        .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            text-align: center;
             padding: 6rem 2rem;
             position: relative;
-        }
-
-        .chapter-content {
-            max-width: 800px;
-            width: 100%;
-        }
-
-        /* Opening */
-        .opening {
-            background: var(--bg-dark);
-            color: #fff;
-            text-align: center;
-            flex-direction: column;
-            position: relative;
             overflow: hidden;
+            color: #fff;
         }
 
-        .opening::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -147,7 +135,7 @@
             z-index: 0;
         }
 
-        .opening::after {
+        .hero::after {
             content: '';
             position: absolute;
             top: 0;
@@ -163,37 +151,37 @@
             z-index: 1;
         }
 
-        .opening > * {
+        .hero > * {
             position: relative;
             z-index: 2;
         }
 
-        .opening-date {
+        .hero-date {
             font-family: 'Space Mono', monospace;
             font-size: 0.75rem;
-            color: #666;
+            color: rgba(255,255,255,0.6);
             letter-spacing: 3px;
             margin-bottom: 3rem;
             opacity: 0;
             animation: fadeIn 1s ease 0.3s forwards;
         }
 
-        .opening h1 {
+        .hero h1 {
             font-family: 'Instrument Serif', Georgia, serif;
             font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 400;
             line-height: 1.15;
             letter-spacing: -1px;
             margin-bottom: 2rem;
+            max-width: 800px;
             opacity: 0;
             animation: fadeIn 1s ease 0.6s forwards;
         }
 
-        .opening-subtitle {
+        .hero-subtitle {
             font-size: 1.1rem;
-            color: #888;
+            color: rgba(255,255,255,0.7);
             max-width: 500px;
-            margin: 0 auto;
             opacity: 0;
             animation: fadeIn 1s ease 0.9s forwards;
         }
@@ -203,7 +191,7 @@
             bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
-            color: #444;
+            color: rgba(255,255,255,0.4);
             font-family: 'Space Mono', monospace;
             font-size: 0.65rem;
             letter-spacing: 2px;
@@ -216,7 +204,7 @@
             display: block;
             width: 1px;
             height: 40px;
-            background: linear-gradient(to bottom, #444, transparent);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
             margin: 1rem auto 0;
         }
 
@@ -224,317 +212,251 @@
             to { opacity: 1; }
         }
 
-        /* Narrative Sections */
-        .narrative {
+        /* Letter Section */
+        .letter-section {
+            padding: 8rem 2rem;
             background: var(--bg-primary);
-            padding: 10rem 2rem;
         }
 
-        .narrative-text {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(1.5rem, 4vw, 2.25rem);
-            line-height: 1.6;
-            color: var(--text-primary);
-            max-width: 700px;
+        .letter-container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .letter-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 3rem;
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(20px);
             transition: all 0.8s ease;
         }
 
-        .narrative-text.visible {
+        .letter-date.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .narrative-text em {
-            font-style: italic;
-            color: var(--accent);
+        .letter-greeting {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.1s;
         }
 
-        .narrative-small {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-top: 2rem;
-            line-height: 1.8;
+        .letter-greeting.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .letter-body {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease 0.2s;
         }
 
-        .narrative-small.visible {
+        .letter-body.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Timestamp */
-        .timestamp {
+        .letter-body p {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.35rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 1.75rem;
+        }
+
+        .letter-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .letter-body em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .letter-body .highlight-number {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .letter-break {
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            letter-spacing: 0.5rem;
+        }
+
+        .letter-signature {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .letter-signature.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .signature-name {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .signature-location {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 8rem 2rem;
+            background: var(--bg-secondary);
+        }
+
+        .stats-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stats-label {
             font-family: 'Space Mono', monospace;
             font-size: 0.7rem;
             color: var(--accent);
             letter-spacing: 2px;
-            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 3rem;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
         }
 
-        .timestamp.visible {
+        .stats-label.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Big Number Sections */
-        .big-moment {
-            background: var(--bg-secondary);
-            text-align: center;
-            padding: 12rem 2rem;
-        }
-
-        .big-number {
-            font-family: 'Space Mono', monospace;
-            font-size: clamp(5rem, 20vw, 15rem);
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1;
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.8s ease;
-        }
-
-        .big-number.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .big-label {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
-            color: var(--text-secondary);
-            margin-top: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease 0.2s;
-        }
-
-        .big-label.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Dark Sections */
-        .dark-section {
-            background: var(--bg-dark);
-            color: #fff;
-        }
-
-        .dark-section .narrative-text {
-            color: #fff;
-        }
-
-        .dark-section .narrative-small {
-            color: #888;
-        }
-
-        .dark-section .timestamp {
-            color: #3b82f6;
-        }
-
-        /* Quote Section */
-        .quote-section {
-            background: var(--bg-primary);
-            padding: 10rem 2rem;
-        }
-
-        .quote-card {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 3rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            border-left: 4px solid var(--accent);
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-
-        .quote-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .quote-amount {
-            font-family: 'Space Mono', monospace;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-
-        .quote-text {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.25rem;
-            font-style: italic;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-
-        .quote-source {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .quote-avatar {
-            width: 44px;
-            height: 44px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: white;
-        }
-
-        .quote-meta strong {
-            display: block;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-        }
-
-        .quote-meta span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Stats Row */
-        .stats-row {
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 4rem;
-            padding-top: 4rem;
-            border-top: 1px solid var(--border);
         }
 
-        .dark-section .stats-row {
-            border-top-color: #222;
-        }
-
-        .stat-item {
+        .stat-card {
             text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
 
-        .stat-item.visible {
+        .stat-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .stat-item:nth-child(2) { transition-delay: 0.1s; }
-        .stat-item:nth-child(3) { transition-delay: 0.2s; }
+        .stat-card:nth-child(2) { transition-delay: 0.1s; }
+        .stat-card:nth-child(3) { transition-delay: 0.2s; }
+        .stat-card:nth-child(4) { transition-delay: 0.3s; }
+        .stat-card:nth-child(5) { transition-delay: 0.4s; }
+        .stat-card:nth-child(6) { transition-delay: 0.5s; }
+
+        .stat-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
 
         .stat-number {
             font-family: 'Space Mono', monospace;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
         }
 
         .stat-label {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        .dark-section .stat-label {
-            color: #666;
-        }
-
-        /* Team Section */
-        .team-section {
-            background: var(--bg-secondary);
-            padding: 8rem 2rem;
-        }
-
-        .team-intro {
-            max-width: 600px;
-            margin-bottom: 4rem;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .team-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
-        }
-
-        .team-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .team-card:hover {
-            box-shadow: var(--shadow-lg);
-        }
-
-        .team-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .team-role {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .team-group-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin: 3rem 0 1.25rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .team-group-label:first-of-type {
-            margin-top: 0;
         }
 
         /* Video Section */
         .video-section {
-            background: var(--bg-primary);
             padding: 8rem 2rem;
+            background: var(--bg-primary);
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
         }
 
+        .video-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .video-label.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease 0.1s;
+        }
+
+        .video-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .video-wrapper {
-            max-width: 800px;
-            margin: 3rem auto 0;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--border);
             box-shadow: var(--shadow-lg);
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
         }
 
         .video-wrapper.visible {
@@ -555,6 +477,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
         .video-caption-source {
@@ -563,85 +486,174 @@
             color: var(--accent);
         }
 
-        /* Closing */
-        .closing {
-            background: var(--bg-dark);
-            color: #fff;
-            text-align: center;
-            padding: 12rem 2rem;
+        /* Grant Section */
+        .grant-section {
+            padding: 8rem 2rem;
+            background: var(--bg-secondary);
         }
 
-        .closing h2 {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 400;
-            line-height: 1.3;
+        .grant-container {
             max-width: 700px;
-            margin: 0 auto 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            margin: 0 auto;
         }
 
-        .closing h2.visible {
+        .grant-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .grant-label.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .closing p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 500px;
-            margin: 0 auto;
+        .grant-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease 0.1s;
         }
 
-        .closing p.visible {
+        .grant-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .closing-tag {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-top: 4rem;
-            opacity: 0;
-            transition: all 0.8s ease 0.2s;
+        .grant-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
         }
 
-        .closing-tag.visible {
-            opacity: 1;
+        .grant-logo {
+            width: 56px;
+            height: 56px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: white;
+        }
+
+        .grant-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .grant-info p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.125rem;
+        }
+
+        .grant-amount {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 700;
+            color: var(--accent);
+            margin: 1.5rem 0;
+        }
+
+        .grant-quote {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent);
+            padding-left: 1.25rem;
+            margin: 2rem 0;
+            line-height: 1.8;
+        }
+
+        .grant-attribution {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .grant-supporters {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .grant-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        .grant-avatar {
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .grant-meta strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .grant-meta span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             background: var(--bg-dark);
-            border-top: 1px solid #1a1a1a;
+            color: #fff;
         }
 
         .footer-logo {
             font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .footer-tagline {
             color: #555;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
             margin-bottom: 2rem;
         }
@@ -649,7 +661,7 @@
         .footer-links a {
             color: #666;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             transition: color 0.2s ease;
         }
 
@@ -658,7 +670,7 @@
         }
 
         .footer-heart {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #444;
         }
 
@@ -672,31 +684,37 @@
                 display: none;
             }
 
-            .chapter {
+            .letter-section {
                 padding: 5rem 1.5rem;
             }
 
-            .narrative {
-                padding: 6rem 1.5rem;
+            .letter-body p {
+                font-size: 1.2rem;
             }
 
-            .big-moment {
-                padding: 8rem 1.5rem;
-            }
-
-            .stats-row {
+            .stats-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1rem;
             }
 
-            .quote-card {
-                padding: 2rem;
+            .stat-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .grant-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .video-section,
+            .stats-section,
+            .grant-section {
+                padding: 5rem 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <nav id="navbar">
+    <nav id="navbar" class="dark">
         <div class="logo">COVIDSELFCHECK.APP</div>
         <div class="nav-links">
             <a href="https://github.com/covidselfcheck" target="_blank">GitHub</a>
@@ -704,110 +722,111 @@
         </div>
     </nav>
 
-    <!-- Opening -->
-    <section class="chapter opening">
-        <div class="opening-date">MARCH 2020 · SRIRANGAPATNA, INDIA</div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-date">MARCH 2020 · SRIRANGAPATNA, INDIA</div>
         <h1>I was 17 years old<br>when the pandemic hit.</h1>
-        <p class="opening-subtitle">This is the story of how I built India's first Kannada COVID-19 symptom checker in 72 hours.</p>
+        <p class="hero-subtitle">This is the story of how I built India's first Kannada COVID-19 symptom checker in 72 hours.</p>
         <div class="scroll-hint">SCROLL</div>
     </section>
 
-    <!-- Chapter 1: The Problem -->
-    <section class="narrative">
-        <div class="chapter-content">
-            <div class="timestamp animate">MARCH 27, 2020</div>
-            <p class="narrative-text animate">
-                I was sitting at home in Srirangapatna, watching the news. Karnataka had just become India's <em>third most COVID-affected state</em>.
-            </p>
-            <p class="narrative-small animate">
-                Government helplines were overwhelmed. People were panicking. And I noticed something that bothered me—every symptom checker I could find was in English or Hindi.
-            </p>
+    <!-- Letter -->
+    <section class="letter-section">
+        <div class="letter-container">
+            <div class="letter-date animate">March 2020</div>
+            <div class="letter-greeting animate">Dear visitor,</div>
+            
+            <div class="letter-body animate">
+                <p>
+                    I'm writing this to share a story from a strange, confusing time—one that feels distant now, but shaped who I am.
+                </p>
+                <p>
+                    The early days of COVID-19 were chaos. Nobody knew what was happening. People were scared, misinformation was everywhere, and one question was on everyone's mind: <em>Do I have it?</em>
+                </p>
+                <p>
+                    The problem was simple—how do you tell the difference between a common flu and COVID-19? The symptoms overlapped. People were panicking over every cough, every fever. And in India, most of the information was only available in English or Hindi.
+                </p>
+                <p>
+                    I was 17, at home in Srirangapatna, Karnataka. My father is a health inspector—I grew up understanding how critical it is for people to receive health information in their own language. So I decided to build something.
+                </p>
+
+                <div class="letter-break">· · ·</div>
+
+                <p>
+                    COVIDSELFCHECK.APP was a browser-based, qualitative COVID-19 risk assessment tool. No app downloads. No sign-ups. Just answer a few questions and get a clear assessment—could this be COVID-19, or is it more likely the common flu?
+                </p>
+                <p>
+                    I built it in <span class="highlight-number">72 hours</span> and launched it on March 31, 2020. The original distribution was in Karnataka, in Kannada—a language spoken by <span class="highlight-number">60 million</span> people but ignored by every other symptom checker at the time.
+                </p>
+                <p>
+                    Within hours, it spread. We translated it into <span class="highlight-number">7 Indian languages</span>. The Deputy CM of Karnataka asked to integrate it into the state's helpline—on live television. Strangers showed up to help: doctors, engineers, professors, students. In <span class="highlight-number">24 hours</span>, we had served over <span class="highlight-number">4,500</span> people.
+                </p>
+
+                <div class="letter-break">· · ·</div>
+
+                <p>
+                    A week later, Emergent Ventures—a program run by Tyler Cowen at the Mercatus Center—awarded us a <span class="highlight-number">$4,000</span> grant. Shruti Rajagopalan championed our project. Their support made it possible to expand to more languages. Without them, none of this would have happened.
+                </p>
+                <p>
+                    But this was a rapidly evolving time. Shortly after, the Government of India launched <em>Aarogya Setu</em>—a nationwide symptom checker that was later used for contact tracing. My efforts were short-lived in the market. The moment had passed.
+                </p>
+                <p>
+                    And that's okay.
+                </p>
+                <p>
+                    I built something when it was needed. It helped people during the most confusing weeks of the pandemic. It was open source from day one. And then the world moved on—as it should.
+                </p>
+                <p>
+                    Thank you for reading. This page exists so I don't forget what those 72 hours taught me: that sometimes the right thing to build is the simple thing, in the right language, at the right time.
+                </p>
+            </div>
+
+            <div class="letter-signature animate">
+                <div class="signature-name">Mohammed Suhail</div>
+                <div class="signature-title">Creator, COVIDSELFCHECK.APP</div>
+                <div class="signature-location">Srirangapatna, India</div>
+            </div>
         </div>
     </section>
 
-    <!-- Big Number: 60M -->
-    <section class="chapter big-moment">
-        <div class="big-number animate">60M</div>
-        <div class="big-label animate">Kannada speakers with no symptom checker in their language</div>
-    </section>
-
-    <!-- Chapter 2: The Realization -->
-    <section class="narrative">
-        <div class="chapter-content">
-            <p class="narrative-text animate">
-                60 million people. <em>Invisible</em> to the pandemic response.
-            </p>
-            <p class="narrative-small animate">
-                My father is a health inspector. I grew up understanding how critical clear health communication is—especially in someone's native language. If you can't understand the questions, how can you know if you're at risk?
-            </p>
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stats-label animate">The First 24 Hours</div>
+            <div class="stats-grid">
+                <div class="stat-card animate">
+                    <div class="stat-number">4,501</div>
+                    <div class="stat-label">Page views</div>
+                </div>
+                <div class="stat-card animate">
+                    <div class="stat-number">1,250+</div>
+                    <div class="stat-label">Self-tests taken</div>
+                </div>
+                <div class="stat-card animate">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+                <div class="stat-card animate">
+                    <div class="stat-number">72</div>
+                    <div class="stat-label">Hours to build</div>
+                </div>
+                <div class="stat-card animate">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Hours to govt recognition</div>
+                </div>
+                <div class="stat-card animate">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Team members</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Chapter 3: The Decision -->
-    <section class="narrative dark-section">
-        <div class="chapter-content">
-            <div class="timestamp animate">THAT SAME NIGHT</div>
-            <p class="narrative-text animate">
-                I decided to build it myself.
-            </p>
-            <p class="narrative-small animate">
-                No fancy AI. No machine learning. Just a simple, practical symptom checker that anyone could use—in Kannada. I called my friend Pranav at the University of Maryland. He was in.
-            </p>
-        </div>
-    </section>
-
-    <!-- Big Number: 72 -->
-    <section class="chapter big-moment">
-        <div class="big-number animate">72</div>
-        <div class="big-label animate">hours from idea to live product</div>
-    </section>
-
-    <!-- Chapter 4: The Build -->
-    <section class="narrative">
-        <div class="chapter-content">
-            <div class="timestamp animate">MARCH 28-30, 2020</div>
-            <p class="narrative-text animate">
-                Three days of barely sleeping. Writing code. Translating medical terms. Testing. Fixing. Testing again.
-            </p>
-            <p class="narrative-small animate">
-                We used Apple's Human Interface Guidelines for the design. Deployed on DigitalOcean with help from Unbox Robotics for enterprise infrastructure. We knew if this worked, we'd get traffic. We had to be ready.
-            </p>
-        </div>
-    </section>
-
-    <!-- Chapter 5: Launch -->
-    <section class="narrative dark-section">
-        <div class="chapter-content">
-            <div class="timestamp animate">MARCH 31, 2020 · 12:00 PM</div>
-            <p class="narrative-text animate">
-                We hit publish.
-            </p>
-            <p class="narrative-small animate">
-                COVIDSELFCHECK.APP went live. India's first COVID-19 symptom diagnostic app in Kannada. I shared it on social media and waited.
-            </p>
-        </div>
-    </section>
-
-    <!-- Chapter 6: The Call -->
-    <section class="narrative">
-        <div class="chapter-content">
-            <div class="timestamp animate">10 HOURS LATER</div>
-            <p class="narrative-text animate">
-                The Deputy Chief Minister of Karnataka went on <em>live television</em> and asked to integrate our app into the state's official helpline.
-            </p>
-            <p class="narrative-small animate">
-                I was watching TV with my family when it happened. My phone started blowing up. Friends, relatives, strangers—everyone saw it.
-            </p>
-        </div>
-    </section>
-
-    <!-- Video Section -->
+    <!-- Video -->
     <section class="video-section">
-        <div class="chapter-content" style="max-width: 900px; margin: 0 auto;">
-            <div class="timestamp animate" style="text-align: center;">THE COVERAGE</div>
-            <p class="narrative-text animate" style="text-align: center; font-size: clamp(1.25rem, 3vw, 1.75rem); margin-bottom: 2rem;">
-                This is the ETV Bharat story that aired that day.
-            </p>
+        <div class="video-container">
+            <div class="video-label animate">The Coverage</div>
+            <h2 class="video-title animate">As seen on ETV Bharat</h2>
             <div class="video-wrapper animate">
                 <video controls>
                     <source src="video/coverage.mp4" type="video/mp4">
@@ -821,169 +840,50 @@
         </div>
     </section>
 
-    <!-- Big Number: 24 hours -->
-    <section class="chapter big-moment">
-        <div class="big-number animate">24</div>
-        <div class="big-label animate">hours that changed everything</div>
-    </section>
-
-    <!-- Chapter 7: The Growth -->
-    <section class="narrative">
-        <div class="chapter-content">
-            <div class="timestamp animate">APRIL 1, 2020 · 12:00 PM</div>
-            <p class="narrative-text animate">
-                In 24 hours, we went from a two-person project to a movement.
-            </p>
-            <div class="stats-row">
-                <div class="stat-item animate">
-                    <div class="stat-number">4,501</div>
-                    <div class="stat-label">Page views</div>
-                </div>
-                <div class="stat-item animate">
-                    <div class="stat-number">1,250+</div>
-                    <div class="stat-label">Self-tests taken</div>
-                </div>
-                <div class="stat-item animate">
-                    <div class="stat-number">7</div>
-                    <div class="stat-label">Languages added</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 8: The Team -->
-    <section class="narrative">
-        <div class="chapter-content">
-            <p class="narrative-text animate">
-                People just <em>showed up</em>.
-            </p>
-            <p class="narrative-small animate">
-                Health officials from the government. Professors from universities. Engineers from startups. Students from across India. Everyone wanted to help translate, test, and spread the word. Our team grew from 2 to 10+ in a single day.
-            </p>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="chapter-content" style="max-width: 1000px; margin: 0 auto;">
-            <div class="team-intro">
-                <div class="timestamp animate">THE PEOPLE WHO MADE IT HAPPEN</div>
-                <p class="narrative-text animate" style="font-size: 1.5rem;">I couldn't have done this alone.</p>
-            </div>
-
-            <div class="team-group-label">Core Team</div>
-            <div class="team-grid">
-                <div class="team-card animate">
-                    <div class="team-name">Mohammed Suhail Chinya Salimpasha</div>
-                    <div class="team-role">Creator & Lead · Srirangapatna</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Pranav Shikarpur</div>
-                    <div class="team-role">Co-founder · University of Maryland</div>
-                </div>
-            </div>
-
-            <div class="team-group-label">Advisory & Translation</div>
-            <div class="team-grid">
-                <div class="team-card animate">
-                    <div class="team-name">Salim Pasha</div>
-                    <div class="team-role">Senior Health Inspector · Ministry of Health, Karnataka</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Saieesh Gandhi</div>
-                    <div class="team-role">Agriculture Officer · Government of Goa</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Dr. Sudhakar Prasad</div>
-                    <div class="team-role">Assistant Professor (Nanotech) · Yenepoya Research Center</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Dr. Sindhu Priya ES</div>
-                    <div class="team-role">Assistant Professor · Yenepoya University</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Shahid Memon</div>
-                    <div class="team-role">Co-Founder · Unbox Robotics</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Anuj Vijay Mokashi</div>
-                    <div class="team-role">Engineering Student · Pune (Translation)</div>
-                </div>
-            </div>
-
-            <div class="team-group-label">Beta Testing & Feedback</div>
-            <div class="team-grid">
-                <div class="team-card animate">
-                    <div class="team-name">Vinton Rebello</div>
-                    <div class="team-role">Lecturer of Physics · CFAL</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Aranyo</div>
-                    <div class="team-role">ISEF 2018</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Shubham</div>
-                    <div class="team-role">Engineer · Unbox Robotics</div>
-                </div>
-                <div class="team-card animate">
-                    <div class="team-name">Nidhi Roa</div>
-                    <div class="team-role">Engineer · Unbox Robotics</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 9: The Grant -->
-    <section class="quote-section">
-        <div class="chapter-content">
-            <div class="timestamp animate" style="text-align: center;">APRIL 9, 2020</div>
-            <p class="narrative-text animate" style="text-align: center; margin-bottom: 3rem;">
-                Then came the email that made it real.
-            </p>
-            <div class="quote-card animate">
-                <div class="quote-amount">$4,000</div>
-                <p class="quote-text">
-                    "I am pleased to confirm that Emergent Ventures will be making you a grant to support your project—a diagnostic tool that helps people understand their Covid symptoms, designed in Indian regional languages. We hope this can get you started towards making it available to as many Indians as possible."
-                </p>
-                <div class="quote-source">
-                    <div class="quote-avatar">SR</div>
-                    <div class="quote-meta">
-                        <strong>Shruti Rajagopalan</strong>
-                        <span>Emergent Ventures · Mercatus Center, GMU</span>
+    <!-- Grant -->
+    <section class="grant-section">
+        <div class="grant-container">
+            <div class="grant-label animate">Emergent Ventures</div>
+            <div class="grant-card animate">
+                <div class="grant-header">
+                    <div class="grant-logo">EV</div>
+                    <div class="grant-info">
+                        <h3>Emergent Ventures</h3>
+                        <p>Mercatus Center, George Mason University</p>
                     </div>
                 </div>
+                <div class="grant-amount">$4,000</div>
+                <p class="grant-quote">
+                    "A diagnostic tool that helps people understand their Covid symptoms, designed in Indian regional languages. We hope this grant can get you started towards making it available to as many Indians as possible."
+                </p>
+                <div class="grant-supporters">
+                    <div class="grant-attribution">
+                        <div class="grant-avatar">TC</div>
+                        <div class="grant-meta">
+                            <strong>Tyler Cowen</strong>
+                            <span>Founder, Emergent Ventures</span>
+                        </div>
+                    </div>
+                    <div class="grant-attribution">
+                        <div class="grant-avatar">SR</div>
+                        <div class="grant-meta">
+                            <strong>Shruti Rajagopalan</strong>
+                            <span>Senior Research Fellow, Mercatus Center</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grant-date">April 9, 2020</div>
             </div>
         </div>
-    </section>
-
-    <!-- Chapter 10: The Principles -->
-    <section class="narrative">
-        <div class="chapter-content">
-            <p class="narrative-text animate">
-                We made it <em>open source from day one</em>.
-            </p>
-            <p class="narrative-small animate">
-                The code was public before the app was famous. We didn't use machine learning or AI—we didn't need to. This was about practicality, not impressing anyone. Just simple, clear questions in someone's own language.
-            </p>
-        </div>
-    </section>
-
-    <!-- Closing -->
-    <section class="closing">
-        <h2 class="animate">The pandemic is over now.<br>The app served its purpose.</h2>
-        <p class="animate">
-            But I'll never forget those 72 hours. What it felt like to see something I built actually help people. To see strangers become teammates overnight.
-        </p>
-        <div class="closing-tag animate">Open source. Community-driven. No fancy AI. Just people helping people.</div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-logo">COVIDSELFCHECK.APP</div>
-        <div class="footer-tagline">Built March 2020 · Srirangapatna, India</div>
+        <div class="footer-tagline">Built March 2020 · Open source forever</div>
         <div class="footer-links">
             <a href="https://github.com/covidselfcheck" target="_blank">GitHub</a>
-            <a href="https://www.etvbharat.com/kannada/karnataka/state/mandya/covid-19-app-in-kannada/ka20200331143422052" target="_blank">ETV Bharat Coverage</a>
+            <a href="https://www.etvbharat.com/kannada/karnataka/state/mandya/covid-19-app-in-kannada/ka20200331143422052" target="_blank">ETV Bharat</a>
             <a href="https://www.youtube.com/watch?v=eL5kcPOdr0g" target="_blank">Deputy CM Interview</a>
             <a href="https://en.wikipedia.org/wiki/Mohammed_Suhail_Chinya_Salimpasha" target="_blank">Wikipedia</a>
         </div>
@@ -991,37 +891,24 @@
     </footer>
 
     <script>
-        // Navbar style change on dark sections
+        // Navbar style change on scroll
         const navbar = document.getElementById('navbar');
-        const darkSections = document.querySelectorAll('.dark-section, .opening, .closing');
+        const hero = document.querySelector('.hero');
         
-        const observerNav = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navbar.classList.add('dark');
-                } else {
-                    // Check if any dark section is visible
-                    let anyDarkVisible = false;
-                    darkSections.forEach(section => {
-                        const rect = section.getBoundingClientRect();
-                        if (rect.top < 100 && rect.bottom > 100) {
-                            anyDarkVisible = true;
-                        }
-                    });
-                    if (!anyDarkVisible) {
-                        navbar.classList.remove('dark');
-                    }
-                }
-            });
-        }, { threshold: 0, rootMargin: '-50px 0px -90% 0px' });
-
-        darkSections.forEach(section => observerNav.observe(section));
+        window.addEventListener('scroll', () => {
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            if (window.scrollY > heroBottom - 100) {
+                navbar.classList.remove('dark');
+            } else {
+                navbar.classList.add('dark');
+            }
+        });
 
         // Intersection Observer for scroll animations
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.15
+            threshold: 0.1
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -1034,12 +921,6 @@
 
         document.querySelectorAll('.animate').forEach(el => {
             observer.observe(el);
-        });
-
-        // Staggered animation for team cards
-        const teamCards = document.querySelectorAll('.team-card');
-        teamCards.forEach((card, index) => {
-            card.style.transitionDelay = `${(index % 3) * 0.08}s`;
         });
     </script>
 </body>
