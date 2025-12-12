@@ -6,7 +6,7 @@
     <title>COVIDSELFCHECK.APP | A Pandemic Story</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Gujarati:wght@400;700&family=Noto+Sans+Gurmukhi:wght@400;700&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -190,17 +190,17 @@
         .headline-carousel .headline-text {
             display: block;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .headline-carousel .headline-text.slide-out {
             opacity: 0;
-            transform: translateY(-30px);
+            transform: translateY(-20px);
         }
 
         .headline-carousel .headline-text.slide-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
 
         .hero-subtitle {
@@ -1053,13 +1053,16 @@
     </footer>
 
     <script>
-        // Headline Carousel
+        // Headline Carousel - Marvel Style Intro
         const headlines = [
-            { text: '\u201CIs this COVID-19<br>or just the flu?\u201D', font: "'Instrument Serif', Georgia, serif" },
             { text: '\u201Cಇದು ಕೋವಿಡ್-19<br>ಜ್ವರವೇ?\u201D', font: "'Noto Sans Kannada', sans-serif" },
             { text: '\u201Cयह कोविड-19<br>है क्या?\u201D', font: "'Noto Sans Devanagari', sans-serif" },
             { text: '\u201Cఇది కోవిడ్-19<br>జ్వరమా?\u201D', font: "'Noto Sans Telugu', sans-serif" },
-            { text: '\u201Cஇது கோவிட்-19<br>காய்ச்சலா?\u201D', font: "'Noto Sans Tamil', sans-serif" }
+            { text: '\u201Cஇது கோவிட்-19<br>காய்ச்சலா?\u201D', font: "'Noto Sans Tamil', sans-serif" },
+            { text: '\u201Cहे कोविड-19<br>आहे का?\u201D', font: "'Noto Sans Devanagari', sans-serif" },
+            { text: '\u201Cএটা কি<br>কোভিড-19?\u201D', font: "'Noto Sans Bengali', sans-serif" },
+            { text: '\u201Cഇത് കോവിഡ്-19<br>ആണോ?\u201D', font: "'Noto Sans Malayalam', sans-serif" },
+            { text: '\u201CIs this COVID-19<br>or just the flu?\u201D', font: "'Instrument Serif', Georgia, serif" }
         ];
 
         const carousel = document.getElementById('headlineCarousel');
@@ -1073,41 +1076,60 @@
             return span;
         }
 
-        // Initialize
-        carousel.appendChild(createHeadlineElement(headlines[0]));
-
-        function rotateHeadline() {
+        function flashHeadline(index, callback) {
             const currentEl = carousel.querySelector('.headline-text');
-            
-            // Slide out
-            currentEl.classList.add('slide-out');
-            
-            setTimeout(() => {
-                // Remove old
-                currentEl.remove();
-                
-                // Next headline
-                currentIndex = (currentIndex + 1) % headlines.length;
-                
-                // Create new element
-                const newEl = createHeadlineElement(headlines[currentIndex]);
-                newEl.classList.add('slide-in');
-                carousel.appendChild(newEl);
-                
-                // Trigger reflow and slide in
-                requestAnimationFrame(() => {
+            if (currentEl) {
+                currentEl.classList.add('slide-out');
+                setTimeout(() => {
+                    currentEl.remove();
+                    const newEl = createHeadlineElement(headlines[index]);
+                    newEl.classList.add('slide-in');
+                    carousel.appendChild(newEl);
                     requestAnimationFrame(() => {
-                        newEl.classList.remove('slide-in');
+                        requestAnimationFrame(() => {
+                            newEl.classList.remove('slide-in');
+                            if (callback) callback();
+                        });
                     });
-                });
-            }, 400);
+                }, 150);
+            } else {
+                const newEl = createHeadlineElement(headlines[index]);
+                carousel.appendChild(newEl);
+                if (callback) callback();
+            }
         }
 
-        // Start rotation after 3 seconds, then every 2.5 seconds
-        setTimeout(() => {
-            rotateHeadline();
-            setInterval(rotateHeadline, 2500);
-        }, 3000);
+        // Marvel-style sequence: fast flashes, then decelerate, land on English
+        function marvelIntro() {
+            const sequence = [
+                { index: 0, delay: 150 },
+                { index: 1, delay: 150 },
+                { index: 2, delay: 150 },
+                { index: 3, delay: 180 },
+                { index: 4, delay: 200 },
+                { index: 5, delay: 250 },
+                { index: 6, delay: 350 },
+                { index: 7, delay: 500 }  // English - final
+            ];
+
+            let step = 0;
+            
+            function runStep() {
+                if (step < sequence.length) {
+                    flashHeadline(sequence[step].index, () => {
+                        step++;
+                        if (step < sequence.length) {
+                            setTimeout(runStep, sequence[step - 1].delay);
+                        }
+                    });
+                }
+            }
+
+            // Start after hero fades in
+            setTimeout(runStep, 1200);
+        }
+
+        marvelIntro();
 
         // Navbar style change on scroll
         const navbar = document.getElementById('navbar');
