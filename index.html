@@ -483,6 +483,112 @@
             margin-top: 0.5rem;
         }
 
+        /* Polaroids */
+        .polaroids-section {
+            padding: 4rem 2rem 6rem;
+            background: var(--bg-primary);
+            overflow: hidden;
+        }
+
+        .polaroids-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .polaroid {
+            background: #fefefe;
+            padding: 0.5rem;
+            box-shadow: 
+                0 4px 6px rgba(0,0,0,0.08),
+                0 10px 30px rgba(0,0,0,0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            max-width: 300px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .polaroid.visible {
+            opacity: 1;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .polaroid-1 {
+            transform: rotate(-3deg) translateY(30px);
+        }
+
+        .polaroid-1.visible {
+            transform: rotate(-3deg) translateY(0);
+        }
+
+        .polaroid-2 {
+            transform: rotate(2deg) translateY(30px);
+        }
+
+        .polaroid-2.visible {
+            transform: rotate(2deg) translateY(-10px);
+        }
+
+        .polaroid-3 {
+            transform: rotate(-2deg) translateY(30px);
+        }
+
+        .polaroid-3.visible {
+            transform: rotate(-2deg) translateY(0);
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.03) translateY(-5px) !important;
+            box-shadow: 
+                0 8px 16px rgba(0,0,0,0.1),
+                0 20px 40px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        @media (max-width: 900px) {
+            .polaroids-container {
+                gap: 1.5rem;
+            }
+
+            .polaroid {
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .polaroids-section {
+                padding: 3rem 1.5rem 4rem;
+            }
+
+            .polaroids-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .polaroid {
+                max-width: 280px;
+            }
+
+            .polaroid-1.visible,
+            .polaroid-2.visible,
+            .polaroid-3.visible {
+                transform: rotate(0deg) translateY(0);
+            }
+
+            .polaroid-1.visible { transform: rotate(-2deg) translateY(0); }
+            .polaroid-2.visible { transform: rotate(1deg) translateY(0); }
+            .polaroid-3.visible { transform: rotate(-1deg) translateY(0); }
+        }
+
         /* Stats Section */
         .stats-section {
             padding: 8rem 2rem;
@@ -948,6 +1054,21 @@
                 <div class="signature-name">Mohammed Suhail</div>
                 <div class="signature-title">Creator, COVIDSELFCHECK.APP</div>
                 <div class="signature-location">Srirangapatna, India</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Polaroids -->
+    <section class="polaroids-section">
+        <div class="polaroids-container">
+            <div class="polaroid polaroid-1 animate">
+                <img src="p3.webp" alt="Coding late nights">
+            </div>
+            <div class="polaroid polaroid-2 animate">
+                <img src="p2.webp" alt="Testing on mobile">
+            </div>
+            <div class="polaroid polaroid-3 animate">
+                <img src="p1.webp" alt="Media interview">
             </div>
         </div>
     </section>
