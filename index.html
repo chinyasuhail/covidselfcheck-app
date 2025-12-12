@@ -208,6 +208,93 @@
             margin: 1rem auto 0;
         }
 
+        /* EV Badge */
+        .ev-badge {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.25rem 2rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(20px);
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
+        }
+
+        .ev-badge-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .ev-badge-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .ev-badge-subtitle {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.15rem;
+            color: #fff;
+            font-style: italic;
+        }
+
+        .ev-badge-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(255,255,255,0.12);
+            flex-shrink: 0;
+        }
+
+        .ev-badge-grant {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .ev-badge-amount {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .ev-badge-supporters {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.4;
+        }
+
+        .ev-badge-supporters strong {
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .ev-badge {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+
+            .ev-badge-content,
+            .ev-badge-grant {
+                align-items: center;
+            }
+
+            .ev-badge-divider {
+                width: 60px;
+                height: 1px;
+            }
+        }
+
         @keyframes fadeIn {
             to { opacity: 1; }
         }
@@ -725,8 +812,23 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-date">MARCH 2020 · SRIRANGAPATNA, INDIA</div>
-        <h1>I was 17 years old<br>when the pandemic hit.</h1>
-        <p class="hero-subtitle">This is the story of how I built India's first Kannada COVID-19 symptom checker in 72 hours.</p>
+        <h1>"Is this COVID<br>or just the flu?"</h1>
+        <p class="hero-subtitle">This is the story of how I built India's first COVID-19 Risk Assessment Tool in 72 hours.</p>
+        
+        <div class="ev-badge">
+            <div class="ev-badge-content">
+                <div class="ev-badge-title">Emergent Ventures India</div>
+                <div class="ev-badge-subtitle">#2 Cohort Winner</div>
+            </div>
+            <div class="ev-badge-divider"></div>
+            <div class="ev-badge-grant">
+                <div class="ev-badge-amount">$4,000</div>
+                <div class="ev-badge-supporters">
+                    Supported by <strong>Shruti Rajagopalan</strong> & <strong>Tyler Cowen</strong>
+                </div>
+            </div>
+        </div>
+
         <div class="scroll-hint">SCROLL</div>
     </section>
 
@@ -747,7 +849,7 @@
                     The problem was simple—how do you tell the difference between a common flu and COVID-19? The symptoms overlapped. People were panicking over every cough, every fever. And in India, most of the information was only available in English or Hindi.
                 </p>
                 <p>
-                    I was 17, at home in Srirangapatna, Karnataka. My father is a health inspector—I grew up understanding how critical it is for people to receive health information in their own language. So I decided to build something.
+                    I was 18, at home in Srirangapatna, Karnataka. My father is a health inspector—I grew up understanding how critical it is for people to receive health information in their own language. So I decided to build something.
                 </p>
 
                 <div class="letter-break">· · ·</div>
