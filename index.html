@@ -6,7 +6,7 @@
     <title>COVIDSELFCHECK.APP | A Pandemic Story</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -166,7 +166,8 @@
             animation: fadeIn 1s ease 0.3s forwards;
         }
 
-        .hero h1 {
+        .hero h1,
+        .hero-headline {
             font-family: 'Instrument Serif', Georgia, serif;
             font-size: 6.5rem;
             font-weight: 400;
@@ -176,6 +177,26 @@
             max-width: 900px;
             opacity: 0;
             animation: fadeIn 1s ease 0.6s forwards;
+        }
+
+        .headline-carousel {
+            display: inline-block;
+            position: relative;
+        }
+
+        .headline-carousel .headline-text {
+            display: inline-block;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .headline-carousel .headline-text.slide-out {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        .headline-carousel .headline-text.slide-in {
+            opacity: 0;
+            transform: translateY(30px);
         }
 
         .hero-subtitle {
@@ -242,7 +263,8 @@
 
         /* Tablet */
         @media (max-width: 1024px) {
-            .hero h1 {
+            .hero h1,
+            .hero-headline {
                 font-size: 5rem;
                 letter-spacing: -3px;
             }
@@ -257,7 +279,8 @@
                 padding: 5rem 1.5rem;
             }
 
-            .hero h1 {
+            .hero h1,
+            .hero-headline {
                 font-size: 4rem;
                 letter-spacing: -2px;
                 line-height: 0.98;
@@ -290,15 +313,16 @@
                 margin-bottom: 1.25rem;
             }
 
-            .hero h1 {
-                font-size: 3.5rem;
-                letter-spacing: -2px;
+            .hero h1,
+            .hero-headline {
+                font-size: 3rem;
+                letter-spacing: -1.5px;
                 line-height: 0.95;
                 margin-bottom: 1.5rem;
             }
 
             .hero-subtitle {
-                font-size: 1.15rem;
+                font-size: 1.1rem;
                 line-height: 1.5;
             }
 
@@ -837,7 +861,9 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-date">MARCH 2020 · SRIRANGAPATNA, INDIA</div>
-        <h1>"Is this COVID<br>or just the flu?"</h1>
+        <h1 class="hero-headline">
+            <span class="headline-carousel" id="headlineCarousel"></span>
+        </h1>
         <p class="hero-subtitle">This is the story of how I helped crores of Indians answer that question—by building India's first browser-based COVID-19 risk assessment tool in 72 hours.</p>
         
         <div class="ev-badge">
@@ -1011,6 +1037,62 @@
     </footer>
 
     <script>
+        // Headline Carousel
+        const headlines = [
+            { text: '\u201CIs this COVID-19<br>or just the flu?\u201D', font: "'Instrument Serif', Georgia, serif" },
+            { text: '\u201Cಇದು ಕೋವಿಡ್-19<br>ಜ್ವರವೇ?\u201D', font: "'Noto Sans Kannada', sans-serif" },
+            { text: '\u201Cयह कोविड-19<br>है क्या?\u201D', font: "'Noto Sans Devanagari', sans-serif" },
+            { text: '\u201Cఇది కోవిడ్-19<br>జ్వరమా?\u201D', font: "'Noto Sans Telugu', sans-serif" },
+            { text: '\u201Cஇது கோவிட்-19<br>காய்ச்சலா?\u201D', font: "'Noto Sans Tamil', sans-serif" }
+        ];
+
+        const carousel = document.getElementById('headlineCarousel');
+        let currentIndex = 0;
+
+        function createHeadlineElement(headline) {
+            const span = document.createElement('span');
+            span.className = 'headline-text';
+            span.innerHTML = headline.text;
+            span.style.fontFamily = headline.font;
+            return span;
+        }
+
+        // Initialize
+        carousel.appendChild(createHeadlineElement(headlines[0]));
+
+        function rotateHeadline() {
+            const currentEl = carousel.querySelector('.headline-text');
+            
+            // Slide out
+            currentEl.classList.add('slide-out');
+            
+            setTimeout(() => {
+                // Remove old
+                currentEl.remove();
+                
+                // Next headline
+                currentIndex = (currentIndex + 1) % headlines.length;
+                
+                // Create new element
+                const newEl = createHeadlineElement(headlines[currentIndex]);
+                newEl.classList.add('slide-in');
+                carousel.appendChild(newEl);
+                
+                // Trigger reflow and slide in
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        newEl.classList.remove('slide-in');
+                    });
+                });
+            }, 400);
+        }
+
+        // Start rotation after 3 seconds, then every 2.5 seconds
+        setTimeout(() => {
+            rotateHeadline();
+            setInterval(rotateHeadline, 2500);
+        }, 3000);
+
         // Navbar style change on scroll
         const navbar = document.getElementById('navbar');
         const hero = document.querySelector('.hero');
