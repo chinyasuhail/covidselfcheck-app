@@ -168,20 +168,21 @@
 
         .hero h1 {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: clamp(3rem, 10vw, 5rem);
             font-weight: 400;
-            line-height: 1.15;
+            line-height: 1.1;
             letter-spacing: -1px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             max-width: 800px;
             opacity: 0;
             animation: fadeIn 1s ease 0.6s forwards;
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.7);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: rgba(255,255,255,0.75);
             max-width: 500px;
+            line-height: 1.6;
             opacity: 0;
             animation: fadeIn 1s ease 0.9s forwards;
         }
@@ -210,88 +211,53 @@
 
         /* EV Badge */
         .ev-badge {
-            margin-top: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.25rem 2rem;
+            margin-top: 2.5rem;
+            padding: 0.75rem 1.5rem;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
+            border-radius: 6px;
             backdrop-filter: blur(20px);
             opacity: 0;
             animation: fadeIn 1s ease 1.2s forwards;
         }
 
         .ev-badge-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
+            text-align: center;
         }
 
         .ev-badge-title {
             font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: rgba(255,255,255,0.5);
+            margin-bottom: 0.2rem;
         }
 
         .ev-badge-subtitle {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: #fff;
             font-style: italic;
         }
 
-        .ev-badge-divider {
-            width: 1px;
-            height: 36px;
-            background: rgba(255,255,255,0.12);
-            flex-shrink: 0;
-        }
-
-        .ev-badge-grant {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-        }
-
-        .ev-badge-amount {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1;
-        }
-
-        .ev-badge-supporters {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.45);
-            line-height: 1.4;
-        }
-
-        .ev-badge-supporters strong {
-            color: rgba(255,255,255,0.7);
-            font-weight: 500;
-        }
-
         @media (max-width: 600px) {
             .ev-badge {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-                padding: 1.5rem;
+                padding: 0.6rem 1.25rem;
+                margin-top: 2rem;
             }
 
-            .ev-badge-content,
-            .ev-badge-grant {
-                align-items: center;
+            .ev-badge-title {
+                font-size: 0.55rem;
             }
 
-            .ev-badge-divider {
-                width: 60px;
-                height: 1px;
+            .ev-badge-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .hero-date {
+                font-size: 0.65rem;
+                margin-bottom: 2rem;
             }
         }
 
@@ -819,13 +785,6 @@
             <div class="ev-badge-content">
                 <div class="ev-badge-title">Emergent Ventures India</div>
                 <div class="ev-badge-subtitle">#2 Cohort Winner</div>
-            </div>
-            <div class="ev-badge-divider"></div>
-            <div class="ev-badge-grant">
-                <div class="ev-badge-amount">$4,000</div>
-                <div class="ev-badge-supporters">
-                    Supported by <strong>Shruti Rajagopalan</strong> & <strong>Tyler Cowen</strong>
-                </div>
             </div>
         </div>
 
