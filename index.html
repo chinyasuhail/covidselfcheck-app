@@ -158,31 +158,31 @@
 
         .hero-date {
             font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.45);
-            letter-spacing: 3px;
-            margin-bottom: 2rem;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
             opacity: 0;
             animation: fadeIn 1s ease 0.3s forwards;
         }
 
         .hero h1 {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 5.5rem;
+            font-size: 6.5rem;
             font-weight: 400;
-            line-height: 1.0;
-            letter-spacing: -3px;
-            margin-bottom: 1.75rem;
-            max-width: 800px;
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 2rem;
+            max-width: 900px;
             opacity: 0;
             animation: fadeIn 1s ease 0.6s forwards;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.65);
-            max-width: 520px;
-            line-height: 1.5;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 580px;
+            line-height: 1.45;
             opacity: 0;
             animation: fadeIn 1s ease 0.9s forwards;
         }
@@ -192,10 +192,10 @@
             bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255,255,255,0.35);
+            color: rgba(255,255,255,0.3);
             font-family: 'Space Mono', monospace;
             font-size: 0.6rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             opacity: 0;
             animation: fadeIn 1s ease 1.5s forwards;
         }
@@ -204,17 +204,17 @@
             content: '';
             display: block;
             width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
             margin: 1rem auto 0;
         }
 
         /* EV Badge */
         .ev-badge {
             margin-top: 2.5rem;
-            padding: 0.5rem 1.1rem;
+            padding: 0.6rem 1.25rem;
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 4px;
             opacity: 0;
             animation: fadeIn 1s ease 1.2s forwards;
@@ -226,44 +226,54 @@
 
         .ev-badge-title {
             font-family: 'Space Mono', monospace;
-            font-size: 0.5rem;
-            letter-spacing: 1.5px;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: rgba(255,255,255,0.4);
-            margin-bottom: 0.1rem;
+            margin-bottom: 0.15rem;
         }
 
         .ev-badge-subtitle {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.75);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
             font-style: italic;
         }
 
         /* Tablet */
         @media (max-width: 1024px) {
             .hero h1 {
-                font-size: 4.5rem;
-                letter-spacing: -2px;
+                font-size: 5rem;
+                letter-spacing: -3px;
             }
 
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.25rem;
             }
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 5rem 1.5rem;
+            }
+
             .hero h1 {
-                font-size: 3.5rem;
-                letter-spacing: -1.5px;
+                font-size: 4rem;
+                letter-spacing: -2px;
+                line-height: 0.98;
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1.15rem;
+                max-width: 100%;
             }
 
             .ev-badge {
                 margin-top: 2rem;
+            }
+
+            .ev-badge-subtitle {
+                font-size: 0.95rem;
             }
         }
 
@@ -271,47 +281,42 @@
         @media (max-width: 480px) {
             .hero {
                 padding: 4rem 1.25rem;
+                min-height: 100svh;
             }
 
             .hero-date {
-                font-size: 0.55rem;
-                letter-spacing: 2px;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2.6rem;
-                letter-spacing: -1px;
-                line-height: 1.05;
+                font-size: 0.6rem;
+                letter-spacing: 2.5px;
                 margin-bottom: 1.25rem;
             }
 
+            .hero h1 {
+                font-size: 3.5rem;
+                letter-spacing: -2px;
+                line-height: 0.95;
+                margin-bottom: 1.5rem;
+            }
+
             .hero-subtitle {
-                font-size: 1rem;
-                line-height: 1.55;
-                max-width: 100%;
+                font-size: 1.15rem;
+                line-height: 1.5;
             }
 
             .ev-badge {
                 margin-top: 1.75rem;
-                padding: 0.4rem 0.9rem;
+                padding: 0.5rem 1rem;
             }
 
             .ev-badge-title {
-                font-size: 0.45rem;
-            }
-
-            .ev-badge-subtitle {
-                font-size: 0.8rem;
-            }
-
-            .scroll-hint {
-                bottom: 1.5rem;
                 font-size: 0.5rem;
             }
 
-            .scroll-hint::after {
-                height: 30px;
+            .ev-badge-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .scroll-hint {
+                bottom: 2rem;
             }
         }
 
@@ -833,7 +838,7 @@
     <section class="hero">
         <div class="hero-date">MARCH 2020 · SRIRANGAPATNA, INDIA</div>
         <h1>"Is this COVID<br>or just the flu?"</h1>
-        <p class="hero-subtitle">This is the story of how I built India's first COVID-19 Risk Assessment Tool in 72 hours.</p>
+        <p class="hero-subtitle">This is the story of how I helped crores of Indians answer that question—by building India's first browser-based COVID-19 risk assessment tool in 72 hours.</p>
         
         <div class="ev-badge">
             <div class="ev-badge-content">
