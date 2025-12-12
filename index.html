@@ -6,6 +6,7 @@
     <title>COVIDSELFCHECK.APP | A Pandemic Story</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Gujarati:wght@400;700&family=Noto+Sans+Gurmukhi:wght@400;700&family=Noto+Sans+Oriya:wght@400;700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Gujarati:wght@400;700&family=Noto+Sans+Gurmukhi:wght@400;700&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -1076,6 +1077,22 @@
             return span;
         }
 
+        // Pre-render all headlines offscreen to force font loading
+        function preloadFonts() {
+            const preloader = document.createElement('div');
+            preloader.style.cssText = 'position:absolute;left:-9999px;top:-9999px;visibility:hidden;';
+            headlines.forEach(h => {
+                const span = document.createElement('span');
+                span.innerHTML = h.text;
+                span.style.fontFamily = h.font;
+                preloader.appendChild(span);
+            });
+            document.body.appendChild(preloader);
+            return preloader;
+        }
+
+        const fontPreloader = preloadFonts();
+
         // Initialize with English
         carousel.appendChild(createHeadlineElement(headlines[0]));
 
@@ -1101,8 +1118,14 @@
         }
 
         async function languageSequence() {
-            // Wait for page to settle
-            await new Promise(r => setTimeout(r, 2000));
+            // Wait for all fonts to load
+            await document.fonts.ready;
+            
+            // Clean up preloader
+            fontPreloader.remove();
+            
+            // Buffer for rendering
+            await new Promise(r => setTimeout(r, 1500));
             
             // Flow through languages naturally
             const delays = [400, 350, 300, 280, 260, 280, 300, 400];
