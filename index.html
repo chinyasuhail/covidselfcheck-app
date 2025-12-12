@@ -158,31 +158,31 @@
 
         .hero-date {
             font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.6);
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.45);
             letter-spacing: 3px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             opacity: 0;
             animation: fadeIn 1s ease 0.3s forwards;
         }
 
         .hero h1 {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(3rem, 10vw, 5rem);
+            font-size: 5.5rem;
             font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
+            line-height: 1.0;
+            letter-spacing: -3px;
+            margin-bottom: 1.75rem;
             max-width: 800px;
             opacity: 0;
             animation: fadeIn 1s ease 0.6s forwards;
         }
 
         .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: rgba(255,255,255,0.75);
-            max-width: 500px;
-            line-height: 1.6;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 520px;
+            line-height: 1.5;
             opacity: 0;
             animation: fadeIn 1s ease 0.9s forwards;
         }
@@ -192,9 +192,9 @@
             bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.35);
             font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             letter-spacing: 2px;
             opacity: 0;
             animation: fadeIn 1s ease 1.5s forwards;
@@ -205,18 +205,17 @@
             display: block;
             width: 1px;
             height: 40px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
             margin: 1rem auto 0;
         }
 
         /* EV Badge */
         .ev-badge {
             margin-top: 2.5rem;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1.1rem;
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 6px;
-            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
             opacity: 0;
             animation: fadeIn 1s ease 1.2s forwards;
         }
@@ -227,37 +226,92 @@
 
         .ev-badge-title {
             font-family: 'Space Mono', monospace;
-            font-size: 0.6rem;
+            font-size: 0.5rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 0.2rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 0.1rem;
         }
 
         .ev-badge-subtitle {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.1rem;
-            color: #fff;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.75);
             font-style: italic;
         }
 
-        @media (max-width: 600px) {
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4.5rem;
+                letter-spacing: -2px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+                letter-spacing: -1.5px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
             .ev-badge {
-                padding: 0.6rem 1.25rem;
                 margin-top: 2rem;
             }
+        }
 
-            .ev-badge-title {
-                font-size: 0.55rem;
-            }
-
-            .ev-badge-subtitle {
-                font-size: 0.95rem;
+        /* Mobile */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 1.25rem;
             }
 
             .hero-date {
-                font-size: 0.65rem;
-                margin-bottom: 2rem;
+                font-size: 0.55rem;
+                letter-spacing: 2px;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+                letter-spacing: -1px;
+                line-height: 1.05;
+                margin-bottom: 1.25rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.55;
+                max-width: 100%;
+            }
+
+            .ev-badge {
+                margin-top: 1.75rem;
+                padding: 0.4rem 0.9rem;
+            }
+
+            .ev-badge-title {
+                font-size: 0.45rem;
+            }
+
+            .ev-badge-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .scroll-hint {
+                bottom: 1.5rem;
+                font-size: 0.5rem;
+            }
+
+            .scroll-hint::after {
+                height: 30px;
             }
         }
 
@@ -784,7 +838,7 @@
         <div class="ev-badge">
             <div class="ev-badge-content">
                 <div class="ev-badge-title">Emergent Ventures India</div>
-                <div class="ev-badge-subtitle">Cohort 2 Winner</div>
+                <div class="ev-badge-subtitle">#2 Cohort Winner</div>
             </div>
         </div>
 
