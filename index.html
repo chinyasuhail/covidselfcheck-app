@@ -490,6 +490,98 @@
             overflow: hidden;
         }
 
+        /* Collaborators */
+        .collaborators-section {
+            padding: 6rem 2rem;
+            background: var(--bg-secondary);
+        }
+
+        .collaborators-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .collaborators-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .collaborators-label.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .collaborators-group {
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .collaborators-group.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .group-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .group-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+        }
+
+        .member {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .member-name {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .member-role {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 600px) {
+            .collaborators-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .group-members {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .member-name {
+                font-size: 1rem;
+            }
+        }
+
         .polaroids-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -592,7 +684,7 @@
         /* Stats Section */
         .stats-section {
             padding: 8rem 2rem;
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
         }
 
         .stats-container {
@@ -1069,6 +1161,75 @@
             </div>
             <div class="polaroid polaroid-3 animate">
                 <img src="p1.webp" alt="Media interview">
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborators -->
+    <section class="collaborators-section">
+        <div class="collaborators-container">
+            <div class="collaborators-label animate">The People Who Made This Possible</div>
+            
+            <div class="collaborators-group animate">
+                <div class="group-title">Core Team</div>
+                <div class="group-members">
+                    <div class="member">
+                        <span class="member-name">Pranav Shikarpur</span>
+                        <span class="member-role">University of Maryland</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborators-group animate">
+                <div class="group-title">Advisory</div>
+                <div class="group-members">
+                    <div class="member">
+                        <span class="member-name">Salim Pasha</span>
+                        <span class="member-role">Health Inspector</span>
+                    </div>
+                    <div class="member">
+                        <span class="member-name">Dr. Sudhakar Prasad</span>
+                        <span class="member-role">Yenepoya Medical College</span>
+                    </div>
+                    <div class="member">
+                        <span class="member-name">Dr. Sindhu Priya ES</span>
+                        <span class="member-role">Yenepoya Medical College</span>
+                    </div>
+                    <div class="member">
+                        <span class="member-name">Saieesh Gandhi</span>
+                        <span class="member-role">Goa</span>
+                    </div>
+                    <div class="member">
+                        <span class="member-name">Shahid Memon</span>
+                        <span class="member-role">Unbox Robotics</span>
+                    </div>
+                    <div class="member">
+                        <span class="member-name">Anuj Mokashi</span>
+                        <span class="member-role">Translation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborators-group animate">
+                <div class="group-title">Beta Testers</div>
+                <div class="group-members">
+                    <div class="member">
+                        <span class="member-name">Vinton Rebello</span>
+                        <span class="member-role">CFAL</span>
+                    </div>
+                    <div class="member">
+                        <span class="member-name">Aranyo</span>
+                        <span class="member-role">ISEF</span>
+                    </div>
+                    <div class="member">
+                        <span class="member-name">Shubham Roa</span>
+                        <span class="member-role">Unbox Robotics</span>
+                    </div>
+                    <div class="member">
+                        <span class="member-name">Nidhi Roa</span>
+                        <span class="member-role">Unbox Robotics</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
