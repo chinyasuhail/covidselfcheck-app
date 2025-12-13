@@ -17,7 +17,7 @@
             --text-primary: #0a0a0a;
             --text-secondary: #444444;
             --text-muted: #777777;
-            --accent: #0a0a0a;
+            --accent: #d50032;
             --border: #e0e0e0;
             --border-light: #eeeeee;
             
@@ -281,8 +281,8 @@
         .ev-badge {
             margin-top: 3rem;
             padding: 0.75rem 1.5rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(184,134,11,0.05) 100%);
+            border: 1px solid rgba(212,175,55,0.3);
             border-radius: 4px;
             opacity: 0;
             animation: fadeIn 1s ease 1.2s forwards;
@@ -297,14 +297,14 @@
             font-size: 0.5rem;
             letter-spacing: var(--tracking-wider);
             text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
+            color: #d4af37;
             margin-bottom: 0.2rem;
         }
 
         .ev-badge-subtitle {
             font-family: var(--font-display);
             font-size: var(--text-base);
-            color: rgba(255,255,255,0.75);
+            color: #d4af37;
             font-style: italic;
         }
 
@@ -365,7 +365,7 @@
         .letter-date {
             font-family: var(--font-mono);
             font-size: var(--text-xs);
-            color: var(--text-muted);
+            color: var(--accent);
             letter-spacing: var(--tracking-wider);
             text-transform: uppercase;
             margin-bottom: 3rem;
@@ -471,7 +471,7 @@
         .collaborators-label {
             font-family: var(--font-mono);
             font-size: var(--text-xs);
-            color: var(--text-muted);
+            color: var(--accent);
             letter-spacing: var(--tracking-wider);
             text-transform: uppercase;
             text-align: center;
@@ -533,7 +533,7 @@
         }
 
         .member-name::after {
-            content: '↗';
+            content: '↗\FE0E';
             font-size: 0.65rem;
             opacity: 0;
             transform: translateX(-5px);
@@ -549,13 +549,13 @@
         }
 
         .member-name:hover {
-            color: #3b82f6;
+            color: var(--accent);
         }
 
         .member-name:hover::after {
             opacity: 1;
             transform: translateX(0);
-            color: #3b82f6;
+            color: var(--accent);
         }
 
         .member-role {
@@ -754,7 +754,7 @@
         .video-label {
             font-family: var(--font-mono);
             font-size: var(--text-xs);
-            color: var(--text-muted);
+            color: var(--accent);
             letter-spacing: var(--tracking-wider);
             text-transform: uppercase;
             margin-bottom: 1rem;
