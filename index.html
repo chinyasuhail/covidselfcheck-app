@@ -310,6 +310,7 @@
         .ev-badge-leaf-right svg path,
         .ev-badge-leaf-right svg ellipse {
             fill: #d4af37;
+            opacity: 75%;
         }
 
         .ev-badge-text {
@@ -484,6 +485,14 @@
             overflow: hidden;
         }
 
+        /* Desktop: Polaroids before letter */
+        @media (min-width: 1024px) {
+            .polaroids-section {
+                padding-top: 6rem;
+                padding-bottom: 2rem;
+            }
+        }
+
         /* Collaborators */
         .collaborators-section {
             padding: clamp(4rem, 8vw, 8rem) 2rem;
@@ -593,12 +602,12 @@
         }
 
         .polaroids-container {
-            max-width: 1000px;
+            max-width: 1500px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
+            gap: 4rem;
             flex-wrap: wrap;
         }
 
@@ -1140,6 +1149,21 @@
         <div class="scroll-hint">SCROLL</div>
     </section>
 
+    <!-- Polaroids -->
+    <section class="polaroids-section">
+        <div class="polaroids-container">
+            <div class="polaroid polaroid-1 animate">
+                <img src="1.webp" alt="Coding late nights">
+            </div>
+            <div class="polaroid polaroid-2 animate">
+                <img src="2.webp" alt="Testing on mobile">
+            </div>
+            <div class="polaroid polaroid-3 animate">
+                <img src="3.webp" alt="Media interview">
+            </div>
+        </div>
+    </section>
+
     <!-- Letter -->
     <section class="letter-section">
         <div class="letter-container">
@@ -1173,25 +1197,10 @@
             </div>
 
             <div class="letter-signature animate">
-                <img src="suhail-sign.png" alt="Signature" class="signature-image">
+                <img src="suhail-sign.webp" alt="Signature" class="signature-image">
                 <div class="signature-name">Mohammed Suhail Chinya Salimpasha</div>
                 <div class="signature-title">Creator, COVIDSELFCHECK.APP</div>
                 <div class="signature-location">Srirangapatna, India</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Polaroids -->
-    <section class="polaroids-section">
-        <div class="polaroids-container">
-            <div class="polaroid polaroid-1 animate">
-                <img src="1.png" alt="Coding late nights">
-            </div>
-            <div class="polaroid polaroid-2 animate">
-                <img src="2.png" alt="Testing on mobile">
-            </div>
-            <div class="polaroid polaroid-3 animate">
-                <img src="3.png" alt="Media interview">
             </div>
         </div>
     </section>
