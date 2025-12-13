@@ -481,15 +481,61 @@
         /* Polaroids */
         .polaroids-section {
             padding: clamp(3rem, 6vw, 5rem) 2rem;
-            background: var(--bg-primary);
+            background: white !important;
             overflow: hidden;
+            padding-bottom: 100px !important;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Desktop: Polaroids before letter */
+        .polaroids-container {
+            order: 2;
+        }
+
+        .polaroids-caption {
+            text-align: center;
+            margin-bottom: 2rem;
+            order: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .polaroids-caption.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .polaroids-caption-title {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .polaroids-caption-subtitle {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--text-muted);
+            letter-spacing: var(--tracking-wide);
+        }
+
+        /* Desktop: Caption after polaroids */
         @media (min-width: 1024px) {
             .polaroids-section {
                 padding-top: 6rem;
                 padding-bottom: 2rem;
+            }
+
+            .polaroids-container {
+                order: 1;
+            }
+
+            .polaroids-caption {
+                order: 2;
+                margin-bottom: 0;
+                margin-top: 2.5rem;
             }
         }
 
@@ -1149,25 +1195,12 @@
         <div class="scroll-hint">SCROLL</div>
     </section>
 
-    <!-- Polaroids -->
-    <section class="polaroids-section">
-        <div class="polaroids-container">
-            <div class="polaroid polaroid-1 animate">
-                <img src="1.webp" alt="Coding late nights">
-            </div>
-            <div class="polaroid polaroid-2 animate">
-                <img src="2.webp" alt="Testing on mobile">
-            </div>
-            <div class="polaroid polaroid-3 animate">
-                <img src="3.webp" alt="Media interview">
-            </div>
-        </div>
-    </section>
+
 
     <!-- Letter -->
     <section class="letter-section">
         <div class="letter-container">
-            <div class="letter-date animate">March 2020</div>
+            <div class="letter-date animate">27 March 2020</div>
             
             <div class="letter-body animate">
                 <p>
@@ -1194,15 +1227,38 @@
                 <p>
                     I built something when it was needed. It helped people during the most confusing weeks of the pandemic. It was open source from day one. And then the world moved on—as it should. This page exists so I don't forget what those 72 hours taught me: that sometimes the right thing to build is the simple thing, in the right language, at the right time.
                 </p>
+
+       
             </div>
 
-            <div class="letter-signature animate">
-                <img src="suhail-sign.webp" alt="Signature" class="signature-image">
-                <div class="signature-name">Mohammed Suhail Chinya Salimpasha</div>
-                <div class="signature-title">Creator, COVIDSELFCHECK.APP</div>
-                <div class="signature-location">Srirangapatna, India</div>
-            </div>
+       
+           
         </div>
+    </section>
+
+    <!-- Polaroids -->
+    <section class="polaroids-section">
+        <div class="polaroids-container">
+
+                
+            <div class="polaroid polaroid-1 animate">
+                <img src="1.webp" alt="Coding late nights">
+            </div>
+            <div class="polaroid polaroid-2 animate">
+                <img src="2.webp" alt="Testing on mobile">
+            </div>
+            <div class="polaroid polaroid-3 animate">
+                <img src="3.webp" alt="Media interview">
+            </div>
+
+          
+        </div>
+
+        <div class="polaroids-caption animate">
+            <div class="polaroids-caption-title">Where it all began</div>
+            <div class="polaroids-caption-subtitle">My Command HQ, Srirangapatna </div>
+        </div>
+      
     </section>
 
     <!-- Collaborators -->
@@ -1278,25 +1334,7 @@
         </div>
     </section>
 
-    <!-- Stats -->
-    <!-- Video -->
-    <section class="video-section">
-        <div class="video-container">
-            <div class="video-label animate">The Coverage</div>
-            <h2 class="video-title animate">As seen on ETV Bharat</h2>
-            <div class="video-wrapper animate">
-                <video controls>
-                    <source src="video/coverage.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-caption">
-                    <span>ETV Bharat Kannada</span>
-                    <span class="video-caption-source">March 31, 2020</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
+  
     <!-- Footer -->
     <footer>
         <div class="footer-logo">COVIDSELFCHECK.APP</div>
@@ -1304,10 +1342,10 @@
         <div class="footer-links">
             <a href="https://github.com/covidselfcheck" target="_blank">GitHub</a>
             <a href="https://www.etvbharat.com/kannada/karnataka/state/mandya/covid-19-app-in-kannada/ka20200331143422052" target="_blank">ETV Bharat</a>
-            <a href="https://www.youtube.com/watch?v=eL5kcPOdr0g" target="_blank">Deputy CM Interview</a>
+            <a href="https://www.youtube.com/watch?v=eL5kcPOdr0g" target="_blank">Emergent Ventures</a>
             <a href="https://en.wikipedia.org/wiki/Mohammed_Suhail_Chinya_Salimpasha" target="_blank">Wikipedia</a>
         </div>
-        <div class="footer-heart">made with 💙 in Srirangapatna</div>
+        <div class="footer-heart"> &copy; Mohammed Suhail Chinya Salimpasha</div>
     </footer>
 
     <script>
